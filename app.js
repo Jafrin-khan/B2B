@@ -33,8 +33,7 @@ app.post("/compose", function(req, res){
     title: req.body.postTitle,
     content: req.body.postBody
   });
-
-
+  
   buyer_Seller.save();
 });
 
@@ -54,15 +53,12 @@ app.post("/register",function(req,res){
                 FNAME: firstName,
 
               }
-            }
-    ]
+            }]
 };
-
     const jsonData = JSON.stringify(data);
     const url = "https://us6.api.mailchimp.com/3.0/lists/31d63d7403" //last wala part url ka mera user Id hai
     const options = {
       method: "POST",
-      auth: "jafrin1:d651afd720403353fdbe14bf8097260a-us6"
     }
 
     //now our data is ready hence we'll make request; refer https documentation
@@ -74,7 +70,6 @@ app.post("/register",function(req,res){
           else{
               res.sendFile(__dirname + "/failure.html");
             }
-
            response.on("data",function(data){
              console.log(JSON.parse(data));
            });
@@ -102,14 +97,3 @@ app.get("/login",function(req,res){
 app.listen(3000,function(){
   console.log("server is running successfully");
 });
-
-
-
-//buyer api key
-//d651afd720403353fdbe14bf8097260a-us6
-
-//seller api key
-//90018abbbf8e73ae79aea6c98644eac3-us6
-
-//unique  for audience of Jafrin Khan....List Id
-//31d63d7403
